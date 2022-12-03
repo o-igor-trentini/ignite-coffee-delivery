@@ -5,23 +5,23 @@
 }
 
 /*Size*/
-.text-lg {
+.textLg {
     font-size: 1.25rem;
 }
 
-.text-md {
+.textMd {
     font-size: 1rem;
 }
 
-.text-sm {
+.textSm {
     font-size: 0.875rem;
 }
 
 /*Weight*/
-.text-regular {
+.textRegular {
     font-weight: 400;
 }
 
-.text-bold {
+.textBold {
     font-weight: bold;
 }
