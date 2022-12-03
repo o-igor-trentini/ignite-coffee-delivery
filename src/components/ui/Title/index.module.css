@@ -1,6 +1,6 @@
 /*Default*/
 .title {
-    font-family: 'Baloo 2', cursive;
+    font-family: var(--baloo-family);
     line-height: 1.3;
 }
 

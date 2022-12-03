@@ -18,6 +18,10 @@
     --purple-dark: #4B2995;
     --purple: #8047F8;
     --purple-light: #EBE5F9;
+
+    /*Fonte*/
+    --roboto-family: 'Roboto', sans-serif;
+    --baloo-family: 'Baloo 2', cursive;
 }
 
 :focus {
@@ -33,7 +37,7 @@
 
 body {
     background: var(--background);
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--roboto-family);
     font-size: 1rem;
     -webkit-font-smoothing: antialiased;
 }

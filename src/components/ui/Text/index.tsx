@@ -8,9 +8,11 @@ interface TextProps {
     children: ReactNode;
     size: TextSize;
     weight?: TextWeight;
+    italic?: boolean;
+    className?: string;
 }
 
-export const Text: FC<TextProps> = ({ children, size, weight = 'regular' }) => {
+export const Text: FC<TextProps> = ({ children, size, weight = 'regular', italic = false, className }) => {
     const sizeClassName: Record<TextSize, string> = {
         sm: styles.textSm,
         md: styles.textMd,
@@ -22,7 +24,9 @@ export const Text: FC<TextProps> = ({ children, size, weight = 'regular' }) => {
         bold: styles.textBold,
     };
 
-    const className = `${styles.text} ${sizeClassName[size]} ${weightClassName[weight]}`;
+    const cName = `${styles.text} ${sizeClassName[size]} ${weightClassName[weight]} ${
+        italic ? styles.textItalic : ''
+    } ${className ?? ''}`;
 
-    return <span className={className}>{children}</span>;
+    return <span className={cName}>{children}</span>;
 };
