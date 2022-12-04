@@ -6,6 +6,8 @@ import { Title } from './ui/Title';
 import { Button } from './ui/Button';
 import { Badge } from './ui/Badge';
 import { Counter } from './ui/Counter';
+import { Radio } from './ui/Radio';
+import { CreditCard } from 'phosphor-react';
 
 export const App: FC = () => {
     return (
@@ -28,8 +30,8 @@ export const App: FC = () => {
             >
                 <Button variant="primary">Botão</Button>
                 <Button variant="delete">Botão</Button>
-                <Button variant="shop-cart-primary">Botão</Button>
                 <Button variant="shop-cart-secondary">Botão</Button>
+                <Button variant="shop-cart-primary">Botão</Button>
 
                 <Badge content="3">
                     <Button variant="shop-cart-primary">Botão com Badge</Button>
@@ -37,6 +39,25 @@ export const App: FC = () => {
             </div>
 
             <Counter minValue={-1} />
+
+            <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: 8,
+                }}
+            >
+                <Radio id="1" name="for" value="1">
+                    <CreditCard />
+                    texto1
+                </Radio>
+
+                <Radio id="2" name="for" value="2">
+                    <CreditCard />
+                    texto2
+                </Radio>
+            </div>
         </div>
     );
 };
