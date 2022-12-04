@@ -1,0 +1,37 @@
+.header {
+    height: 6.5rem;
+    padding: 32px 160px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: var(--background);
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.location {
+    height: 2.375rem;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+
+    color: var(--purple-dark);
+
+    background: var(--purple-light);
+    border-radius: 6px;
+}
+
+.location svg {
+    color: var(--purple);
+    font-size: 1.375rem ;
+}
