@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import '../styles/main.css';
-import { Header } from './layout/Header';
+import { BrowserRouter } from 'react-router-dom';
+import { Router } from './Router';
 
 export const App: FC = () => {
     return (
-        <div>
-            <Header />
-        </div>
+        <BrowserRouter>
+            <Router />
+        </BrowserRouter>
     );
 };

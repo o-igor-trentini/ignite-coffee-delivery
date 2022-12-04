@@ -5,14 +5,19 @@ import { Text } from '../../ui/Text';
 import { MapPin } from 'phosphor-react';
 import { Button } from '../../ui/Button';
 import { Badge } from '../../ui/Badge';
+import { NavLink } from 'react-router-dom';
 
 export const Header: FC = () => {
+    const baseUrl = import.meta.env.BASE_URL;
+
     return (
         <div className={styles.header}>
-            <img
-                src={logoSvg}
-                alt="Copo de café roxo com um foguete transparente como estampa e uma escrita com o nome da plataforma na direta"
-            />
+            <NavLink to={baseUrl}>
+                <img
+                    src={logoSvg}
+                    alt="Copo de café roxo com um foguete transparente como estampa e uma escrita com o nome da plataforma na direta"
+                />
+            </NavLink>
 
             <div className={styles.actions}>
                 <div className={styles.location}>
