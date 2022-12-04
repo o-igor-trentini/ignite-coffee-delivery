@@ -22,11 +22,14 @@
     /*Fonte*/
     --roboto-family: 'Roboto', sans-serif;
     --baloo-family: 'Baloo 2', cursive;
+
+    /*Outros*/
+    --default-box-shadow: 0 0 0 2px var(--yellow-dark);
 }
 
 :focus {
     outline: transparent;
-    /*box-shadow: 0 0 0 2px var(--purple);*/
+    box-shadow: var(--default-box-shadow);
 }
 
 * {

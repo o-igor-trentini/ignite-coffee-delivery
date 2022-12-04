@@ -1,0 +1,96 @@
+/*Default*/
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 4px;
+
+    font-family: var(--roboto-family);
+    line-height: 1.6;
+    text-transform: uppercase;
+
+    border-radius: 6px;
+    border: 0;
+
+    cursor: pointer;
+
+    position: relative;
+}
+
+/*Variants*/
+.buttonPrimary {
+    padding: 12px 8px;
+
+    color: var(--white);
+    background: var(--yellow);
+}
+
+.buttonPrimary:hover {
+    background: var(--yellow-dark);
+}
+
+.buttonShopCartLightPrimary {
+    padding: 8px;
+
+    color: var(--yellow-dark);
+    background: var(--yellow-light);
+}
+
+.buttonShopCartSecondary {
+    padding: 8px;
+
+    color: var(--base-card);
+    background: var(--purple-dark);
+}
+
+.buttonShopCartSecondary:hover {
+    background: var(--purple);
+}
+
+.buttonIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonDelete {
+    padding: 0 8px;
+
+    color: var(--base-text);
+    background: var(--base-button);
+}
+
+.buttonDelete:hover {
+    color: var(--base-subtitle);
+    background: var(--base-hover);
+}
+
+.buttonDelete .buttonIcon {
+    color: var(--purple);
+}
+
+.buttonDelete:hover .buttonIcon {
+    color: var(--purple-dark);
+}
+
+/*Size*/
+.buttonXsSize {
+    height: 2rem;
+
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.buttonSmSize {
+    height: 2.375rem;
+
+    font-size: 0.75rem;
+}
+
+.buttonDefaultSize {
+    height: 2.875rem;
+
+    font-size: 0.875rem;
+    font-weight: bold;
+}

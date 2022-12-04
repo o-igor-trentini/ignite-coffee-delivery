@@ -14,7 +14,9 @@
 }
 
 .inputContainerFocused {
-    border: 1px solid var(--yellow-dark)
+    border: 1px solid var(--yellow-dark);
+    outline: transparent;
+    box-shadow: var(--default-box-shadow);
 }
 
 .inputComponent {
@@ -27,6 +29,7 @@
 
     border: 0;
     background: transparent;
+    box-shadow: none;
 }
 
 .inputComponent::placeholder {
