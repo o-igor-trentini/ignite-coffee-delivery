@@ -5,6 +5,7 @@ import { Text } from './ui/Text';
 import { Title } from './ui/Title';
 import { Button } from './ui/Button';
 import { Badge } from './ui/Badge';
+import { Counter } from './ui/Counter';
 
 export const App: FC = () => {
     return (
@@ -34,6 +35,8 @@ export const App: FC = () => {
                     <Button variant="shop-cart-primary">Botão com Badge</Button>
                 </Badge>
             </div>
+
+            <Counter minValue={-1} />
         </div>
     );
 };

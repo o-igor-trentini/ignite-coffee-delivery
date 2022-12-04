@@ -1,0 +1,26 @@
+.counter {
+    height: 2rem;
+    padding: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    border-radius: 6px;
+    background: var(--base-button);
+
+    color: var(--base-title);
+}
+
+.counter button {
+    color: var(--purple);
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+}
+
+.counter button:hover {
+    color: var(--purple-dark);
+    cursor: pointer;
+}
