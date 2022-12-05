@@ -25,6 +25,7 @@
 
     /*Outros*/
     --default-box-shadow: 0 0 0 2px var(--yellow-dark);
+    --default-sides-padding: 160px;
 }
 
 :focus {

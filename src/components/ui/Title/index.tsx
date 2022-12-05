@@ -12,9 +12,9 @@ interface TextProps {
 export const Title: FC<TextProps> = ({ children, size, className }) => {
     const sizeClassName: Record<TextSize, string> = {
         xs: styles.titleXs,
-        sm: styles.textSm,
-        md: styles.textMd,
-        lg: styles.textLg,
+        sm: styles.titleSm,
+        md: styles.titleMd,
+        lg: styles.titleLg,
         xl: styles.titleXl,
     };
 

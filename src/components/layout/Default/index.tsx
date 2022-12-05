@@ -8,7 +8,9 @@ export const Default: FC = () => {
         <div className={styles.default}>
             <Header />
 
-            <Outlet />
+            <div className={styles.defaultContent}>
+                <Outlet />
+            </div>
         </div>
     );
 };

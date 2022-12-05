@@ -1,0 +1,15 @@
+.coffeeMenu {
+    width: 100%;
+    padding: 32px var(--default-sides-padding);
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 54px;
+}
+
+.coffeeMenuTitle {
+    width: 100%;
+    color: var(--base-subtitle);
+}
