@@ -6,9 +6,10 @@ type TextSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 interface TextProps {
     children: ReactNode;
     size: TextSize;
+    className?: string;
 }
 
-export const Title: FC<TextProps> = ({ children, size }) => {
+export const Title: FC<TextProps> = ({ children, size, className }) => {
     const sizeClassName: Record<TextSize, string> = {
         xs: styles.titleXs,
         sm: styles.textSm,
@@ -17,7 +18,7 @@ export const Title: FC<TextProps> = ({ children, size }) => {
         xl: styles.titleXl,
     };
 
-    const className = `${styles.title} ${sizeClassName[size]}`;
+    const cName = `${styles.title} ${sizeClassName[size]} ${className ?? ''}`;
 
-    return <span className={className}>{children}</span>;
+    return <span className={cName}>{children}</span>;
 };

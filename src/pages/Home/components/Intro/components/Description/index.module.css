@@ -1,0 +1,58 @@
+.description {
+    width: 30%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 66px;
+}
+
+.descriptionDisclaimer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.descriptionTitle {
+    width: 100%;
+
+    color: var(--base-title);
+}
+
+.descriptionSubtitle {
+    width: 100%;
+
+    color: var(--base-subtitle);
+}
+
+.descriptionItens {
+    width: 100%;
+    overflow-wrap: break-word;
+
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 20px 40px;
+}
+
+.descriptionItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--base-text);
+}
+
+.descriptionItemIcon {
+    width: 2rem;
+    height: 2rem;
+    padding: 8px;
+
+    color: var(--background);
+    font-size: 1rem;
+
+    border-radius: 50%;
+}
