@@ -16,9 +16,10 @@ interface ButtonProps {
     children?: ReactNode;
     type?: 'submit' | 'button';
     variant?: ButtonVariant;
+    onClick?: () => void;
 }
 
-export const Button: FC<ButtonProps> = ({ children, type = 'button', variant = 'primary' }) => {
+export const Button: FC<ButtonProps> = ({ children, type = 'button', variant = 'primary', onClick }) => {
     const sizeClassName: Record<ButtonSize, string> = {
         xs: styles.buttonXsSize,
         sm: styles.buttonSmSize,
@@ -49,7 +50,7 @@ export const Button: FC<ButtonProps> = ({ children, type = 'button', variant = '
     const className = `${styles.button} ${variantClassName[variant]}`;
 
     return (
-        <button type={type} className={className}>
+        <button type={type} onClick={onClick} className={className}>
             {iconIsVisible && <span className={styles.buttonIcon}>{icon[variant]}</span>}
 
             <span hidden={!childrenIsVisible}>{children}</span>

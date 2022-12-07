@@ -25,7 +25,43 @@
 
     /*Outros*/
     --default-box-shadow: 0 0 0 2px var(--yellow-dark);
-    --default-sides-padding: 160px;
+    --default-sides-padding: 394px;
+
+    /*Breakpoints*/
+    /*--xl: 1200px;*/
+    /*--lg: 992px;*/
+    /*--md: 768px;*/
+    /*--xs: 576px;*/
+}
+
+@media screen and (max-width: 1600px) {
+    :root {
+        --default-sides-padding: 122px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    :root {
+        --default-sides-padding: 100px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    :root {
+        --default-sides-padding: 104px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --default-sides-padding: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :root {
+        --default-sides-padding: 40px;
+    }
 }
 
 :focus {

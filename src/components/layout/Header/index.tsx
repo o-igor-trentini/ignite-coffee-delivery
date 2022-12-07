@@ -5,10 +5,13 @@ import { Text } from '../../ui/Text';
 import { MapPin } from 'phosphor-react';
 import { Button } from '../../ui/Button';
 import { Badge } from '../../ui/Badge';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const Header: FC = () => {
+    const navigate = useNavigate();
     const baseUrl = import.meta.env.BASE_URL;
+
+    const handleClickCart = (): void => navigate(`${baseUrl}checkout`);
 
     return (
         <div className={styles.header}>
@@ -29,7 +32,7 @@ export const Header: FC = () => {
                 </div>
 
                 <Badge content={1}>
-                    <Button variant="shop-cart-primary" />
+                    <Button variant="shop-cart-primary" onClick={handleClickCart} />
                 </Badge>
             </div>
         </div>
