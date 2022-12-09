@@ -1,0 +1,72 @@
+.checkoutCard {
+    width: 40rem;
+}
+
+.checkoutAddressCard {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.checkoutAddressCardTitle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.checkoutAddressCardTitle svg {
+    color: var(--yellow-dark);
+    font-size: 1rem;
+}
+
+.checkoutAddressCardDescription {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.checkoutAddressCardDescription span {
+    width: 100%;
+    color: var(--base-text);
+}
+
+.checkoutAddressCardDescription span:first-child {
+    color: var(--base-subtitle) !important;
+}
+
+.checkoutAddressCardForm {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.checkoutAddressCardFormRow {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+}
+
+.rowGrid2 {
+    display: grid;
+    grid-template-columns: 12.5rem 21.75rem;
+    gap: 12px;
+}
+
+.rowGrid3 {
+    display: grid;
+    grid-template-columns: 12.5rem 17.25rem 3.75rem;
+    gap: 12px;
+}
