@@ -29,20 +29,31 @@ export const PaymentCard: FC<PaymentCardProps> = ({ onSubmit }) => {
 
                 <form onSubmit={onSubmit} className="w-100">
                     <div className={styles.paymentCardForm}>
-                        <Radio name="method" value="credit" required block>
-                            <CreditCard />
-                            Cartão de crédito
-                        </Radio>
+                        <Radio.Group
+                            values={[
+                                {
+                                    label: 'Cartão de crédito',
+                                    value: 'credit',
 
-                        <Radio name="method" value="debit" required block>
-                            <Money name="method" />
-                            Cartão de débito
-                        </Radio>
+                                    icon: <CreditCard />,
+                                },
+                                {
+                                    label: 'Cartão de débito',
+                                    value: 'debit',
 
-                        <Radio name="method" value="money" required block>
-                            <Bank />
-                            Dinheiro
-                        </Radio>
+                                    icon: <Money name="method" />,
+                                },
+                                {
+                                    label: 'Dinheiro',
+                                    value: 'money',
+
+                                    icon: <Bank />,
+                                },
+                            ]}
+                            block
+                            required
+                            name="method"
+                        />
                     </div>
                 </form>
             </div>
