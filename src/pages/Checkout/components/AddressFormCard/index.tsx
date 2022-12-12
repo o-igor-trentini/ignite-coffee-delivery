@@ -11,12 +11,12 @@ interface AddressFormCardProps {
 
 export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
     return (
-        <Card className={styles.checkoutCard}>
-            <div className={styles.checkoutAddressCard}>
-                <div className={styles.checkoutAddressCardTitle}>
+        <Card>
+            <div className={styles.addressCard}>
+                <div className={styles.addressCardTitle}>
                     <MapPinLine />
 
-                    <div className={styles.checkoutAddressCardDescription}>
+                    <div className={styles.addressCardDescription}>
                         <Text size="md" weight="regular">
                             Endereço de Entrega
                         </Text>
@@ -28,16 +28,16 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
                 </div>
 
                 <form onSubmit={onSubmit}>
-                    <div className={styles.checkoutAddressCardForm}>
-                        <div className={styles.checkoutAddressCardFormRow}>
+                    <div className={styles.addressCardForm}>
+                        <div className={styles.addressCardFormRow}>
                             <Input placeholder="CEP" maxLenght={8} />
                         </div>
 
-                        <div className={styles.checkoutAddressCardFormRow}>
-                            <Input placeholder="Rua" cover />
+                        <div className={styles.addressCardFormRow}>
+                            <Input placeholder="Rua" block />
                         </div>
 
-                        <div className={styles.checkoutAddressCardFormRow}>
+                        <div className={styles.addressCardFormRow}>
                             <div className={styles.rowGrid2}>
                                 <Input placeholder="Número" />
 
@@ -45,7 +45,7 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
                             </div>
                         </div>
 
-                        <div className={styles.checkoutAddressCardFormRow}>
+                        <div className={styles.addressCardFormRow}>
                             <div className={styles.rowGrid3}>
                                 <Input placeholder="Bairro" />
 

@@ -5,14 +5,14 @@ import { Text } from '../Text';
 interface InputProps {
     placeholder?: string;
     optional?: boolean;
-    cover?: boolean;
+    block?: boolean;
     maxLenght?: number;
 }
 
-export const Input: FC<InputProps> = ({ placeholder, optional = false, cover = false, maxLenght }) => {
+export const Input: FC<InputProps> = ({ placeholder, optional = false, block = false, maxLenght }) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const containerClassName = `${styles.inputContainer} ${isFocused ? styles.inputContainerFocused : ''} ${
-        cover ? 'w-100' : ''
+        block ? 'w-100' : ''
     }`;
 
     const handleFocus = (): void => setIsFocused(true);
