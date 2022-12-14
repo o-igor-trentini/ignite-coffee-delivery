@@ -3,6 +3,7 @@ import styles from './index.module.css';
 import { AddressFormCard } from './components/AddressFormCard';
 import { PaymentCard } from './components/PaymentCard';
 import { Title } from '../../components/ui/Title';
+import { CartCard } from './components/CartCard';
 
 export const Checkout: FC = () => {
     const handleSubmitAddressForm = () => console.log('### AddressForm is submited');
@@ -19,6 +20,12 @@ export const Checkout: FC = () => {
 
                     <PaymentCard onSubmit={handleSubmitPaymentForm} />
                 </div>
+            </div>
+
+            <div className={styles.checkoutCart}>
+                <Title size="xs">Cafés selecionados</Title>
+
+                <CartCard />
             </div>
         </div>
     );

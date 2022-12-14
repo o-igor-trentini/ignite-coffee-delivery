@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import styles from './index.module.css';
 import logoSvg from '../../../assets/logo.svg';
 import { Text } from '../../ui/Text';
@@ -6,8 +6,10 @@ import { MapPin } from 'phosphor-react';
 import { Button } from '../../ui/Button';
 import { Badge } from '../../ui/Badge';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { CartContext } from '../../../context/Cart';
 
 export const Header: FC = () => {
+    const { orders } = useContext(CartContext);
     const navigate = useNavigate();
     const baseUrl = import.meta.env.BASE_URL;
 
@@ -31,7 +33,7 @@ export const Header: FC = () => {
                     </Text>
                 </div>
 
-                <Badge content={1}>
+                <Badge content={orders.length}>
                     <Button variant="shop-cart-primary" onClick={handleClickCart} />
                 </Badge>
             </div>

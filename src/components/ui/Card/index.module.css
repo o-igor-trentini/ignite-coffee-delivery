@@ -10,3 +10,7 @@
     border-radius: 6px;
     background: var(--base-card);
 }
+
+.cardWithBorder {
+    border-radius: 6px 46px 6px 46px;
+}

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import styles from './index.module.css';
 import expressoTradicionalPng from '../../../../../../assets/coffees/expresso-tracional.png';
 import expressoAmericanoPng from '../../../../../../assets/coffees/expresso-americano.png';
@@ -18,8 +18,9 @@ import { Title } from '../../../../../../components/ui/Title';
 import { Text } from '../../../../../../components/ui/Text';
 import { Counter } from '../../../../../../components/ui/Counter';
 import { Button } from '../../../../../../components/ui/Button';
+import { CartContext } from '../../../../../../context/Cart';
 
-interface Coffee {
+export interface Coffee {
     name: string;
     description: string;
     price: number;
@@ -131,6 +132,12 @@ const coffees: Coffee[] = [
 ];
 
 export const CoffeeList: FC = () => {
+    const { addOrder } = useContext(CartContext);
+
+    const handleAddCoffee = (coffeeName: string): void => {
+        addOrder({ id: null, coffee: coffees.find((item) => item.name === coffeeName) as Coffee, amount: 1 });
+    };
+
     const card = (coffee: Coffee): JSX.Element => (
         <div key={coffee.name} className={styles.card}>
             <img src={coffee.imageSrc} alt="" />
@@ -167,7 +174,7 @@ export const CoffeeList: FC = () => {
                 <div className={styles.buyActions}>
                     <Counter minValue={1} />
 
-                    <Button variant="shop-cart-secondary" />
+                    <Button variant="shop-cart-secondary" onClick={() => handleAddCoffee(coffee.name)} />
                 </div>
             </div>
         </div>

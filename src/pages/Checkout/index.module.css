@@ -3,8 +3,9 @@
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: row;
+    gap: 32px;
 }
 
 .checkoutForms {
@@ -21,4 +22,14 @@
     align-items: center;
     flex-direction: column;
     gap: 12px;
+}
+
+.checkoutCart {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
 }
