@@ -134,51 +134,65 @@ const coffees: Coffee[] = [
 export const CoffeeList: FC = () => {
     const { addOrder } = useContext(CartContext);
 
-    const handleAddCoffee = (coffeeName: string): void => {
-        addOrder({ id: null, coffee: coffees.find((item) => item.name === coffeeName) as Coffee, amount: 1 });
+    const handleAddCoffee = (coffeeName: string, coffeeAmount: number): void =>
+        addOrder({
+            id: null,
+            coffee: coffees.find((item) => item.name === coffeeName) as Coffee,
+            amount: coffeeAmount,
+        });
+
+    const card = (coffee: Coffee): JSX.Element => {
+        let coffeeAmount = 1;
+
+        const handleChangeAmount = (value: number): void => {
+            coffeeAmount = value;
+        };
+
+        return (
+            <div key={coffee.name} className={styles.card}>
+                <img src={coffee.imageSrc} alt="" />
+
+                <div className={styles.cardTags}>
+                    {coffee.tags.map((item) => (
+                        <span key={item} className={styles.cardTag}>
+                            {item}
+                        </span>
+                    ))}
+                </div>
+
+                <div className={styles.cardDescription}>
+                    <div className={styles.cardTitle}>
+                        <Title size="sm">{coffee.name}</Title>
+                    </div>
+
+                    <div className={styles.cardSubtitle}>
+                        <Text size="sm" weight="regular">
+                            {coffee.description}
+                        </Text>
+                    </div>
+                </div>
+
+                <div className={styles.buy}>
+                    <div className={styles.buyPrice}>
+                        <Text size="sm" weight="regular">
+                            R$
+                        </Text>
+
+                        <Title size="md">{coffee.price}</Title>
+                    </div>
+
+                    <div className={styles.buyActions}>
+                        <Counter minValue={1} onChange={handleChangeAmount} />
+
+                        <Button
+                            variant="shop-cart-secondary"
+                            onClick={() => handleAddCoffee(coffee.name, coffeeAmount)}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
     };
-
-    const card = (coffee: Coffee): JSX.Element => (
-        <div key={coffee.name} className={styles.card}>
-            <img src={coffee.imageSrc} alt="" />
-
-            <div className={styles.cardTags}>
-                {coffee.tags.map((item) => (
-                    <span key={item} className={styles.cardTag}>
-                        {item}
-                    </span>
-                ))}
-            </div>
-
-            <div className={styles.cardDescription}>
-                <div className={styles.cardTitle}>
-                    <Title size="sm">{coffee.name}</Title>
-                </div>
-
-                <div className={styles.cardSubtitle}>
-                    <Text size="sm" weight="regular">
-                        {coffee.description}
-                    </Text>
-                </div>
-            </div>
-
-            <div className={styles.buy}>
-                <div className={styles.buyPrice}>
-                    <Text size="sm" weight="regular">
-                        R$
-                    </Text>
-
-                    <Title size="md">{coffee.price}</Title>
-                </div>
-
-                <div className={styles.buyActions}>
-                    <Counter minValue={1} />
-
-                    <Button variant="shop-cart-secondary" onClick={() => handleAddCoffee(coffee.name)} />
-                </div>
-            </div>
-        </div>
-    );
 
     return <div className={styles.coffeeList}>{coffees.map((item) => card(item))}</div>;
 };
