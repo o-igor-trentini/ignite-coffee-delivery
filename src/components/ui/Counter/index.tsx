@@ -3,18 +3,35 @@ import { Minus, Plus } from 'phosphor-react';
 import styles from './index.module.css';
 import { Text } from '../Text';
 
+type CounterSize = 'xs' | 'default';
+
 interface CounterProps {
+    value?: number;
     minValue?: number;
+    size?: CounterSize;
     onIncrease?: (value: number) => void;
     onDecrease?: (value: number) => void;
     onChange?: (value: number) => void;
 }
 
-export const Counter: FC<CounterProps> = ({ minValue = 0, onIncrease, onDecrease, onChange }) => {
-    const [value, setValue] = useState<number>(minValue);
+export const Counter: FC<CounterProps> = ({
+    value,
+    minValue = 0,
+    size = 'default',
+    onIncrease,
+    onDecrease,
+    onChange,
+}) => {
+    const [inputvalue, setInputvalue] = useState<number>(value ?? minValue);
+    const sizeClassName: Record<CounterSize, string> = {
+        xs: styles.counterXsSize,
+        default: styles.counterDefaultSize,
+    };
+
+    const counterClassName = `${styles.counter} ${sizeClassName[size]}`;
 
     const handleIncrease = (): void =>
-        setValue((state) => {
+        setInputvalue((state) => {
             const newValue = state + 1;
 
             if (onIncrease) onIncrease(newValue);
@@ -23,7 +40,7 @@ export const Counter: FC<CounterProps> = ({ minValue = 0, onIncrease, onDecrease
         });
 
     const handleDecrease = (): void =>
-        setValue((state) => {
+        setInputvalue((state) => {
             const newValue = state === minValue ? state : state - 1;
 
             if (onDecrease) onDecrease(newValue);
@@ -34,17 +51,17 @@ export const Counter: FC<CounterProps> = ({ minValue = 0, onIncrease, onDecrease
     useEffect(() => {
         if (!onChange) return;
 
-        onChange(value);
-    }, [value, onChange]);
+        onChange(inputvalue);
+    }, [inputvalue, onChange]);
 
     return (
-        <div className={styles.counter}>
+        <div className={counterClassName}>
             <button type="button" onClick={handleDecrease}>
                 <Minus weight="bold" />
             </button>
 
             <Text size="md" weight="regular">
-                {value}
+                {inputvalue}
             </Text>
 
             <button type="button" onClick={handleIncrease}>

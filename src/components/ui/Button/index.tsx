@@ -16,10 +16,11 @@ interface ButtonProps {
     children?: ReactNode;
     type?: 'submit' | 'button';
     variant?: ButtonVariant;
+    block?: boolean;
     onClick?: () => void;
 }
 
-export const Button: FC<ButtonProps> = ({ children, type = 'button', variant = 'primary', onClick }) => {
+export const Button: FC<ButtonProps> = ({ children, type = 'button', variant = 'primary', block = false, onClick }) => {
     const sizeClassName: Record<ButtonSize, string> = {
         xs: styles.buttonXsSize,
         sm: styles.buttonSmSize,
@@ -47,7 +48,7 @@ export const Button: FC<ButtonProps> = ({ children, type = 'button', variant = '
     ].includes(variant);
     const childrenIsVisible = variant !== 'shop-cart-primary' && variant !== 'shop-cart-secondary';
 
-    const className = `${styles.button} ${variantClassName[variant]}`;
+    const className = `${styles.button} ${variantClassName[variant]} ${block ? 'w-100' : ''}`;
 
     return (
         <button type={type} onClick={onClick} className={className}>

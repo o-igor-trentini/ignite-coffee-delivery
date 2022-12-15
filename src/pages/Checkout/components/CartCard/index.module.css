@@ -1,3 +1,83 @@
 .cartCard {
+    width: 100%;
 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.cartItem {
+    width: 100%;
+    padding: 8px 4px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: space-between;
+}
+
+.cartItemDescriptionContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.cartItemDescriptionContent img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.cartItemDescription {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cartItemDescription span {
+    width: 100%;
+    color: var(--base-subtitle)
+}
+
+.cartItemDescriptionActions {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.cartItemPrice span {
+    color: var(--base-text);
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    margin: 24px 0;
+
+    border: 1px solid var(--base-button);
+}
+
+.cartCardFooter {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.cartCardFooterItem {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

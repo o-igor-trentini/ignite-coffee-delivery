@@ -19,6 +19,7 @@ import { Text } from '../../../../../../components/ui/Text';
 import { Counter } from '../../../../../../components/ui/Counter';
 import { Button } from '../../../../../../components/ui/Button';
 import { CartContext } from '../../../../../../context/Cart';
+import { moneyMask } from '../../../../../../utils/string';
 
 export interface Coffee {
     name: string;
@@ -178,7 +179,7 @@ export const CoffeeList: FC = () => {
                             R$
                         </Text>
 
-                        <Title size="md">{coffee.price}</Title>
+                        <Title size="md">{moneyMask('' + coffee.price)}</Title>
                     </div>
 
                     <div className={styles.buyActions}>
@@ -194,5 +195,5 @@ export const CoffeeList: FC = () => {
         );
     };
 
-    return <div className={styles.coffeeList}>{coffees.map((item) => card(item))}</div>;
+    return <div className={styles.coffeeList}>{coffees.map(card)}</div>;
 };

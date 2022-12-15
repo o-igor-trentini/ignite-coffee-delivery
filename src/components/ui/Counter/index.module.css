@@ -1,5 +1,6 @@
+/*Default*/
 .counter {
-    height: 2.375rem;
+    min-width: 4.5rem;
     padding: 8px;
 
     display: flex;
@@ -11,6 +12,7 @@
     background: var(--base-button);
 
     color: var(--base-title);
+    text-align: center;
 }
 
 .counter button {
@@ -23,4 +25,13 @@
 .counter button:hover {
     color: var(--purple-dark);
     cursor: pointer;
+}
+
+/*Size*/
+.counterXsSize {
+    height: 2rem;
+}
+
+.counterDefaultSize {
+    height: 2.375rem;
 }
