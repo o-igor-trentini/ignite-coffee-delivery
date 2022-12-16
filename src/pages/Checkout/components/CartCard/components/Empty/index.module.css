@@ -1,0 +1,17 @@
+.empty {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.empty svg {
+    color: var(--yellow);
+}
+
+.empty span {
+    color: var(--base-subtitle);
+}

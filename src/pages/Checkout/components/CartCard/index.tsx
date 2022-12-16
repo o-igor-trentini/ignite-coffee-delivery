@@ -6,6 +6,7 @@ import { Text } from '../../../../components/ui/Text';
 import { Counter } from '../../../../components/ui/Counter';
 import { Button } from '../../../../components/ui/Button';
 import { moneyMask } from '../../../../utils/string';
+import { Empty } from './components/Empty';
 
 export const CartCard: FC = () => {
     const { orders, removeOrder } = useContext(CartContext);
@@ -98,7 +99,7 @@ export const CartCard: FC = () => {
                     </Button>
                 </>
             ) : (
-                'Nada no carrinho ;-;'
+                <Empty label="Por enquanto, nada está no carrinho..." />
             )}
         </Card>
     );
