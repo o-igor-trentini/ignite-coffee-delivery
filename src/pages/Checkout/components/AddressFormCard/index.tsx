@@ -1,15 +1,33 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { Card } from '../../../../components/ui/Card';
 import styles from './index.module.css';
 import { MapPinLine } from 'phosphor-react';
 import { Text } from '../../../../components/ui/Text';
 import { Input } from '../../../../components/ui/Input';
+import { findAddressByCep } from '../../../../service/address/api';
 
 interface AddressFormCardProps {
     onSubmit: () => void;
 }
 
 export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
+    const handleChangeCep = async ({ currentTarget }: ChangeEvent<HTMLInputElement>): Promise<void> => {
+        if (currentTarget.value.length < 8) return;
+
+        try {
+            const address = await findAddressByCep(currentTarget.value);
+
+            document.getElementById('street')!.value = address.logradouro ?? '';
+            document.getElementById('complement')!.value = address.complemento ?? '';
+            document.getElementById('neighborhood')!.value = address.bairro ?? '';
+            document.getElementById('city')!.value = address.localidade ?? '';
+            document.getElementById('state-initials')!.value = address.uf ?? '';
+        } catch (err: unknown) {
+            console.error(err);
+            alert('Não foi possível buscar o endereço de forma automática!');
+        }
+    };
+
     return (
         <Card>
             <div className={styles.addressCard}>
@@ -30,28 +48,28 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
                 <form onSubmit={onSubmit}>
                     <div className={styles.addressCardForm}>
                         <div className={styles.addressCardFormRow}>
-                            <Input placeholder="CEP" maxLenght={8} />
+                            <Input type="number" placeholder="CEP" maxLenght={8} onChange={handleChangeCep} />
                         </div>
 
                         <div className={styles.addressCardFormRow}>
-                            <Input placeholder="Rua" block />
+                            <Input id="street" placeholder="Rua" block />
                         </div>
 
                         <div className={styles.addressCardFormRow}>
                             <div className={styles.rowGrid2}>
-                                <Input placeholder="Número" />
+                                <Input id="number" type="number" placeholder="Número" maxLenght={10} />
 
-                                <Input placeholder="Complemento" optional />
+                                <Input id="complement" placeholder="Complemento" optional />
                             </div>
                         </div>
 
                         <div className={styles.addressCardFormRow}>
                             <div className={styles.rowGrid3}>
-                                <Input placeholder="Bairro" />
+                                <Input id="neighborhood" placeholder="Bairro" />
 
-                                <Input placeholder="Cidade" />
+                                <Input id="city" placeholder="Cidade" />
 
-                                <Input placeholder="UF" />
+                                <Input id="state-initials" placeholder="UF" />
                             </div>
                         </div>
                     </div>
