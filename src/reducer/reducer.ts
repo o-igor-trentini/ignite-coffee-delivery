@@ -37,6 +37,19 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
             return { ...state, orders: orders.filter((item) => item.id !== orderId) };
         }
 
+        case ActionTypes.UPDATE_ORDER: {
+            const order = action.payload as Order;
+            const orders = state.orders.slice();
+
+            const orderIndex = orders.findIndex((item) => item.id === order.id);
+
+            if (orderIndex < 0) return state;
+
+            orders[orderIndex] = order;
+
+            return { ...state, orders };
+        }
+
         default:
             return state;
     }

@@ -41,7 +41,9 @@ export const Counter: FC<CounterProps> = ({
 
     const handleDecrease = (): void =>
         setInputvalue((state) => {
-            const newValue = state === minValue ? state : state - 1;
+            if (state === minValue) return state;
+
+            const newValue = state - 1;
 
             if (onDecrease) onDecrease(newValue);
 

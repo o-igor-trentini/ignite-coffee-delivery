@@ -9,13 +9,19 @@ import { moneyMask } from '../../../../utils/string';
 import { Empty } from './components/Empty';
 
 export const CartCard: FC = () => {
-    const { orders, removeOrder } = useContext(CartContext);
+    const { orders, removeOrder, addOrder, updateOrder } = useContext(CartContext);
     const deliveryPrice = 3.5;
     const itemsTotalPrice = orders.reduce<number>((_, { coffee, amount }) => coffee.price * amount, 0);
     const finalPrice = itemsTotalPrice + deliveryPrice;
 
     const cartItem = ({ id, coffee, amount }: Order): JSX.Element => {
         const handleRemove = (): void => removeOrder(String(id));
+
+        const handleChange = (newAmount: number): void => {
+            setTimeout(() => {
+                updateOrder({ id, coffee, amount: newAmount });
+            }, 100);
+        };
 
         return (
             <Fragment key={coffee.name}>
@@ -29,7 +35,13 @@ export const CartCard: FC = () => {
                             </Text>
 
                             <div className={styles.cartItemDescriptionActions}>
-                                <Counter minValue={1} value={amount} size="xs" />
+                                <Counter
+                                    minValue={1}
+                                    value={amount}
+                                    size="xs"
+                                    onIncrease={handleChange}
+                                    onDecrease={handleChange}
+                                />
 
                                 <Button variant="delete" onClick={handleRemove}>
                                     Remover
