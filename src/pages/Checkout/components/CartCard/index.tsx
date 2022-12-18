@@ -10,15 +10,9 @@ import { Empty } from './components/Empty';
 
 export const CartCard: FC = () => {
     const { orders, removeOrder } = useContext(CartContext);
-    const itemsTotal = ((): number => {
-        let total = 0;
-
-        orders.forEach((item) => {
-            total += item.coffee.price * item.amount;
-        });
-
-        return total;
-    })();
+    const deliveryPrice = 3.5;
+    const itemsTotalPrice = orders.reduce<number>((_, { coffee, amount }) => coffee.price * amount, 0);
+    const finalPrice = itemsTotalPrice + deliveryPrice;
 
     const cartItem = ({ id, coffee, amount }: Order): JSX.Element => {
         const handleRemove = (): void => removeOrder(String(id));
@@ -46,7 +40,7 @@ export const CartCard: FC = () => {
 
                     <div className={styles.cartItemPrice}>
                         <Text weight="bold" size="md">
-                            R$ {moneyMask(String(coffee.price * amount))}
+                            {moneyMask(coffee.price * amount)}
                         </Text>
                     </div>
                 </div>
@@ -69,7 +63,7 @@ export const CartCard: FC = () => {
                             </Text>
 
                             <Text size="md" weight="regular">
-                                R$ 0
+                                {moneyMask(itemsTotalPrice)}
                             </Text>
                         </div>
 
@@ -79,7 +73,7 @@ export const CartCard: FC = () => {
                             </Text>
 
                             <Text size="md" weight="regular">
-                                R$ 0
+                                {moneyMask(deliveryPrice)}
                             </Text>
                         </div>
 
@@ -89,7 +83,7 @@ export const CartCard: FC = () => {
                             </Text>
 
                             <Text size="lg" weight="bold">
-                                R$ {moneyMask('' + itemsTotal)}
+                                {moneyMask(finalPrice)}
                             </Text>
                         </div>
                     </div>

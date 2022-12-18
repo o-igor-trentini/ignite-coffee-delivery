@@ -179,7 +179,7 @@ export const CoffeeList: FC = () => {
                             R$
                         </Text>
 
-                        <Title size="md">{moneyMask('' + coffee.price)}</Title>
+                        <Title size="md">{moneyMask(coffee.price)}</Title>
                     </div>
 
                     <div className={styles.buyActions}>
