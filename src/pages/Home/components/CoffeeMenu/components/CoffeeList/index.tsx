@@ -174,13 +174,9 @@ export const CoffeeList: FC = () => {
                 </div>
 
                 <div className={styles.buy}>
-                    <div className={styles.buyPrice}>
-                        <Text size="sm" weight="regular">
-                            R$
-                        </Text>
-
-                        <Title size="md">{moneyMask(coffee.price)}</Title>
-                    </div>
+                    <Title size="md" className={styles.buyPrice}>
+                        {moneyMask(coffee.price)}
+                    </Title>
 
                     <div className={styles.buyActions}>
                         <Counter minValue={1} onChange={handleChangeAmount} />
