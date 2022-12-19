@@ -17,11 +17,11 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
         try {
             const address = await findAddressByCep(currentTarget.value);
 
-            document.getElementById('street')!.value = address.logradouro ?? '';
-            document.getElementById('complement')!.value = address.complemento ?? '';
-            document.getElementById('neighborhood')!.value = address.bairro ?? '';
-            document.getElementById('city')!.value = address.localidade ?? '';
-            document.getElementById('state-initials')!.value = address.uf ?? '';
+            (document.getElementById('street') as HTMLInputElement).value = address.logradouro ?? '';
+            (document.getElementById('complement') as HTMLInputElement).value = address.complemento ?? '';
+            (document.getElementById('neighborhood') as HTMLInputElement).value = address.bairro ?? '';
+            (document.getElementById('city') as HTMLInputElement).value = address.localidade ?? '';
+            (document.getElementById('state-initials') as HTMLInputElement).value = address.uf ?? '';
         } catch (err: unknown) {
             console.error(err);
             alert('Não foi possível buscar o endereço de forma automática!');
@@ -52,24 +52,24 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
                         </div>
 
                         <div className={styles.addressCardFormRow}>
-                            <Input id="street" placeholder="Rua" block />
+                            <Input id="street" placeholder="Rua" block maxLenght={50} />
                         </div>
 
                         <div className={styles.addressCardFormRow}>
                             <div className={styles.rowGrid2}>
                                 <Input id="number" type="number" placeholder="Número" maxLenght={10} />
 
-                                <Input id="complement" placeholder="Complemento" optional />
+                                <Input id="complement" placeholder="Complemento" optional maxLenght={50} />
                             </div>
                         </div>
 
                         <div className={styles.addressCardFormRow}>
                             <div className={styles.rowGrid3}>
-                                <Input id="neighborhood" placeholder="Bairro" />
+                                <Input id="neighborhood" placeholder="Bairro" maxLenght={50} />
 
-                                <Input id="city" placeholder="Cidade" />
+                                <Input id="city" placeholder="Cidade" maxLenght={50} />
 
-                                <Input id="state-initials" placeholder="UF" />
+                                <Input id="state-initials" placeholder="UF" maxLenght={2} />
                             </div>
                         </div>
                     </div>
