@@ -8,7 +8,11 @@ import { Button } from '../../../../components/ui/Button';
 import { moneyMask } from '../../../../utils/string';
 import { Empty } from './components/Empty';
 
-export const CartCard: FC = () => {
+interface CartCardProps {
+    onFinish: () => void;
+}
+
+export const CartCard: FC<CartCardProps> = ({ onFinish }) => {
     const { orders, removeOrder, addOrder, updateOrder } = useContext(CartContext);
     const deliveryPrice = 3.5;
     const itemsTotalPrice = orders.reduce<number>((_, { coffee, amount }) => coffee.price * amount, 0);
@@ -100,7 +104,7 @@ export const CartCard: FC = () => {
                         </div>
                     </div>
 
-                    <Button variant="primary" block>
+                    <Button variant="primary" type="submit" block onClick={onFinish}>
                         Confirmar pedido
                     </Button>
                 </>

@@ -1,6 +1,7 @@
 import { ChangeEvent, FC, useState } from 'react';
 import styles from './index.module.css';
 import { Text } from '../Text';
+import { cepMask, onlyNumbersMask } from '../../../utils/string';
 
 interface InputProps {
     id?: string;
@@ -8,7 +9,7 @@ interface InputProps {
     optional?: boolean;
     block?: boolean;
     maxLenght?: number;
-    type?: 'text' | 'number';
+    type?: 'text' | 'cep' | 'number';
     onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -33,7 +34,15 @@ export const Input: FC<InputProps> = ({
     const handleChange = (evt: ChangeEvent<HTMLInputElement>): void => {
         if (onChange) onChange(evt);
 
-        if (type === 'number') evt.currentTarget.value = evt.currentTarget.value.replace(/\D/g, '');
+        /*eslint-disable*/
+        switch (type) {
+            case 'cep':
+                evt.currentTarget.value = cepMask(evt.currentTarget.value);
+
+            case 'number':
+                evt.currentTarget.value = onlyNumbersMask(evt.currentTarget.value);
+        }
+        /*eslint-enable*/
     };
 
     return (
