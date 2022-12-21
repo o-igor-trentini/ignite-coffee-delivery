@@ -8,7 +8,16 @@
     gap: 32px;
 }
 
+@media screen and (max-width: 1200px) {
+    .checkout {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .checkoutForms {
+    width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -17,6 +26,8 @@
 }
 
 .checkoutFormsCards {
+    width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: center;

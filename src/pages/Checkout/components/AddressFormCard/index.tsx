@@ -63,7 +63,7 @@ const AddressFormCard: ForwardRefRenderFunction<AddressFormCardRef, unknown> = (
     }));
 
     return (
-        <Card>
+        <Card className="w-100">
             <div className={styles.addressCard}>
                 <div className={styles.addressCardTitle}>
                     <MapPinLine />
@@ -79,7 +79,7 @@ const AddressFormCard: ForwardRefRenderFunction<AddressFormCardRef, unknown> = (
                     </div>
                 </div>
 
-                <form id="form-address" onSubmit={(e) => e.preventDefault()}>
+                <form id="form-address" className="w-100">
                     <div className={styles.addressCardForm}>
                         <div className={styles.addressCardFormRow}>
                             <Input
@@ -89,6 +89,7 @@ const AddressFormCard: ForwardRefRenderFunction<AddressFormCardRef, unknown> = (
                                 maxLenght={8}
                                 onChange={handleChangeCep}
                                 required
+                                className={styles.rowCepInput}
                             />
                         </div>
 

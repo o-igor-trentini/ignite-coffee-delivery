@@ -47,7 +47,6 @@ const PaymentCard: ForwardRefRenderFunction<PaymentCardFormRef, unknown> = (_, r
                             O pagamento é feito na entrega. Escolha a forma que deseja pagar
                         </Text>
                     </div>
-                    <button onClick={getFormValues}>teste</button>
                 </div>
 
                 <form id="form-payment" className="w-100">

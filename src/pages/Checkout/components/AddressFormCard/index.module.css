@@ -9,6 +9,8 @@
 }
 
 .addressCardTitle {
+    width: 100%;
+
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -39,6 +41,8 @@
 }
 
 .addressCardForm {
+    width: 100%;
+
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -56,13 +60,46 @@
 }
 
 .rowGrid2 {
+    width: 100%;
+
     display: grid;
     grid-template-columns: 12.5rem 21.75rem;
     gap: 12px;
 }
 
+
 .rowGrid3 {
+    width: 100%;
+
     display: grid;
     grid-template-columns: 12.5rem 17.25rem 3.75rem;
     gap: 12px;
+}
+
+@media screen and (max-width: 1200px) {
+    .rowCepInput {
+        width: 50%;
+    }
+
+    .rowGrid2 {
+        grid-template-columns: 35% calc(65% - 12px);
+    }
+
+    .rowGrid3 {
+        grid-template-columns: 35% 50% calc(15% - 24px);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .rowCepInput {
+        width: 100%;
+    }
+
+    .rowGrid2 {
+        grid-template-columns: 100%;
+    }
+
+    .rowGrid3 {
+        grid-template-columns: 100%;
+    }
 }

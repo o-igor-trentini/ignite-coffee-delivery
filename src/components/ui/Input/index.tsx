@@ -12,6 +12,7 @@ interface InputProps {
     type?: 'text' | 'cep' | 'number';
     required?: boolean;
     onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
+    className?: string;
 }
 
 export const Input: FC<InputProps> = ({
@@ -23,11 +24,12 @@ export const Input: FC<InputProps> = ({
     type = 'text',
     required = false,
     onChange,
+    className,
 }) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const containerClassName = `${styles.inputContainer} ${isFocused ? styles.inputContainerFocused : ''} ${
         block ? 'w-100' : ''
-    }`;
+    } ${className ?? ''}`;
 
     const handleFocus = (): void => setIsFocused(true);
 
