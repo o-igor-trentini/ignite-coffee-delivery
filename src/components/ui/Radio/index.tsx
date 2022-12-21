@@ -47,7 +47,7 @@ interface RadioGroupProps extends Omit<RadioBaseProps, 'label' | 'value' | 'icon
 
 const Group: FC<RadioGroupProps> = ({ values, name, block, required, id }) => {
     return (
-        <>
+        <div className={styles.radioGroupContainer}>
             {values.map((item) => (
                 <Default
                     key={item.value}
@@ -60,7 +60,7 @@ const Group: FC<RadioGroupProps> = ({ values, name, block, required, id }) => {
                     required={required}
                 />
             ))}
-        </>
+        </div>
     );
 };
 
