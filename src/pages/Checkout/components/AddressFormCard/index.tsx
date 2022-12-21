@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, forwardRef, ForwardRefRenderFunction, useImperativeHandle } from 'react';
+import { ChangeEvent, forwardRef, ForwardRefRenderFunction, useImperativeHandle } from 'react';
 import { Card } from '../../../../components/ui/Card';
 import styles from './index.module.css';
 import { MapPinLine } from 'phosphor-react';
@@ -14,26 +14,14 @@ export interface AddressForm {
     complement?: string;
     neighborhood: string;
     city: string;
-    uf: string;
+    stateInitials: string;
 }
 
-interface AddressFormCardProps {
-    onSubmit?: (values: AddressForm) => void;
+export interface AddressFormCardRef {
+    getValues: () => AddressForm | null;
 }
 
-export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
-    const handleSubmit = (evt: FormEvent<HTMLFormElement>): AddressForm => {
-        // const values:AddressForm = {
-        // evt.currentTarget;
-        // }
-
-        if (onSubmit) onSubmit({} as any);
-
-        console.log('### form address', evt.currentTarget);
-
-        return {} as any;
-    };
-
+const AddressFormCard: ForwardRefRenderFunction<AddressFormCardRef, unknown> = (_, ref) => {
     const handleChangeCep = async ({ currentTarget }: ChangeEvent<HTMLInputElement>): Promise<void> => {
         if (currentTarget.value.length < 8) return;
 
@@ -44,14 +32,35 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
             (document.getElementById('complement') as HTMLInputElement).value = address.complemento ?? '';
             (document.getElementById('neighborhood') as HTMLInputElement).value = address.bairro ?? '';
             (document.getElementById('city') as HTMLInputElement).value = address.localidade ?? '';
-            (document.getElementById('state-initials') as HTMLInputElement).value = address.uf ?? '';
+            (document.getElementById('state_initials') as HTMLInputElement).value = address.uf ?? '';
         } catch (err: unknown) {
             console.error(err);
-            alert('Não foi possível buscar o endereço de forma automática!');
         } finally {
             (document.getElementById('cep') as HTMLInputElement).value = cepMask(currentTarget.value ?? '');
         }
     };
+
+    const getFormValues = (): AddressForm | null => {
+        const form = document.querySelector('#form-address') as HTMLFormElement;
+
+        if (!form.reportValidity()) return null;
+
+        const values: AddressForm = {
+            zipCode: form?.cep.value ?? '',
+            street: form?.street.value ?? '',
+            complement: form?.complement.value ?? '',
+            neighborhood: form?.neighborhood.value ?? '',
+            city: form?.city.value ?? '',
+            stateInitials: form?.state_initials.value ?? '',
+            number: Number(form?.number.value) ?? 0,
+        };
+
+        return values;
+    };
+
+    useImperativeHandle(ref, () => ({
+        getValues: getFormValues,
+    }));
 
     return (
         <Card>
@@ -70,19 +79,26 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
                     </div>
                 </div>
 
-                <form onSubmit={handleSubmit}>
+                <form id="form-address" onSubmit={(e) => e.preventDefault()}>
                     <div className={styles.addressCardForm}>
                         <div className={styles.addressCardFormRow}>
-                            <Input id="cep" type="number" placeholder="CEP" maxLenght={8} onChange={handleChangeCep} />
+                            <Input
+                                id="cep"
+                                type="number"
+                                placeholder="CEP"
+                                maxLenght={8}
+                                onChange={handleChangeCep}
+                                required
+                            />
                         </div>
 
                         <div className={styles.addressCardFormRow}>
-                            <Input id="street" placeholder="Rua" block maxLenght={50} />
+                            <Input id="street" placeholder="Rua" block maxLenght={50} required />
                         </div>
 
                         <div className={styles.addressCardFormRow}>
                             <div className={styles.rowGrid2}>
-                                <Input id="number" type="cep" placeholder="Número" maxLenght={10} />
+                                <Input id="number" type="cep" placeholder="Número" maxLenght={10} required />
 
                                 <Input id="complement" placeholder="Complemento" optional maxLenght={50} />
                             </div>
@@ -90,11 +106,11 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
 
                         <div className={styles.addressCardFormRow}>
                             <div className={styles.rowGrid3}>
-                                <Input id="neighborhood" placeholder="Bairro" maxLenght={50} />
+                                <Input id="neighborhood" placeholder="Bairro" maxLenght={50} required />
 
-                                <Input id="city" placeholder="Cidade" maxLenght={50} />
+                                <Input id="city" placeholder="Cidade" maxLenght={50} required />
 
-                                <Input id="state-initials" placeholder="UF" maxLenght={2} />
+                                <Input id="state_initials" placeholder="UF" maxLenght={2} required />
                             </div>
                         </div>
                     </div>
@@ -103,3 +119,5 @@ export const AddressFormCard: FC<AddressFormCardProps> = ({ onSubmit }) => {
         </Card>
     );
 };
+
+export default forwardRef(AddressFormCard);

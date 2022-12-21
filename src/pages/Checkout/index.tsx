@@ -1,33 +1,24 @@
-import { FC } from 'react';
+import { FC, useRef } from 'react';
 import styles from './index.module.css';
-import { PaymentCard } from './components/PaymentCard';
+import PaymentCard, { PaymentCardFormRef } from './components/PaymentCard';
 import { Title } from '../../components/ui/Title';
 import { CartCard } from './components/CartCard';
-import { AddressForm, AddressFormCard } from './components/AddressFormCard';
+import AddressFormCard, { AddressFormCardRef } from './components/AddressFormCard';
+import { useNavigate } from 'react-router-dom';
 
 export const Checkout: FC = () => {
-    // const navigate = useNavigate();
-    // const baseUrl = import.meta.env.BASE_URL;
-    let addressFormValues: AddressForm = {
-        zipCode: '',
-        street: '',
-        number: 0,
-        complement: '',
-        neighborhood: '',
-        city: '',
-        uf: '',
-    };
-
-    const handleSubmitAddressForm = (values: AddressForm) => {
-        console.log('### address', values);
-
-        addressFormValues = values;
-    };
-
-    const handleSubmitPaymentForm = () => console.log('### PaymentForm is submited');
+    const navigate = useNavigate();
+    const baseUrl = import.meta.env.BASE_URL;
+    const addressFormRef = useRef<AddressFormCardRef>(null);
+    const paymentFormRef = useRef<PaymentCardFormRef>(null);
 
     const handleFinish = (): void => {
-        // navigate(baseUrl + 'success');
+        const addressFormValues = addressFormRef.current?.getValues();
+        const paymentFormValues = paymentFormRef.current?.getValues();
+
+        if (!addressFormValues || !paymentFormValues) return;
+
+        navigate(baseUrl + 'success');
     };
 
     return (
@@ -36,9 +27,9 @@ export const Checkout: FC = () => {
                 <Title size="xs">Complete seu pedido</Title>
 
                 <div className={styles.checkoutFormsCards}>
-                    <AddressFormCard onSubmit={handleSubmitAddressForm} />
+                    <AddressFormCard ref={addressFormRef} />
 
-                    <PaymentCard onSubmit={handleSubmitPaymentForm} />
+                    <PaymentCard ref={paymentFormRef} />
                 </div>
             </div>
 

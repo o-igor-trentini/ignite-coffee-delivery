@@ -10,6 +10,7 @@ interface InputProps {
     block?: boolean;
     maxLenght?: number;
     type?: 'text' | 'cep' | 'number';
+    required?: boolean;
     onChange?: (evt: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -20,6 +21,7 @@ export const Input: FC<InputProps> = ({
     block = false,
     maxLenght,
     type = 'text',
+    required = false,
     onChange,
 }) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -55,6 +57,8 @@ export const Input: FC<InputProps> = ({
                 onFocus={handleFocus}
                 onBlur={handleBlur}
                 onChange={handleChange}
+                autoComplete="off"
+                required={required}
                 className={styles.inputComponent}
             />
 

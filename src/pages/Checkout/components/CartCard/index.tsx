@@ -13,7 +13,7 @@ interface CartCardProps {
 }
 
 export const CartCard: FC<CartCardProps> = ({ onFinish }) => {
-    const { orders, removeOrder, addOrder, updateOrder } = useContext(CartContext);
+    const { orders, removeOrder, updateOrder } = useContext(CartContext);
     const deliveryPrice = 3.5;
     const itemsTotalPrice = orders.reduce<number>((_, { coffee, amount }) => coffee.price * amount, 0);
     const finalPrice = itemsTotalPrice + deliveryPrice;
@@ -104,7 +104,7 @@ export const CartCard: FC<CartCardProps> = ({ onFinish }) => {
                         </div>
                     </div>
 
-                    <Button variant="primary" type="submit" block onClick={onFinish}>
+                    <Button variant="primary" block onClick={onFinish}>
                         Confirmar pedido
                     </Button>
                 </>
