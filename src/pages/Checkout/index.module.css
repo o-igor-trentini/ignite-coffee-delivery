@@ -1,4 +1,5 @@
 .checkout {
+    margin: 40px 0;
     padding: 0 var(--default-sides-padding);
 
     display: flex;
