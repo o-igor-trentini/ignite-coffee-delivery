@@ -9,6 +9,7 @@ interface CounterProps {
     value?: number;
     minValue?: number;
     size?: CounterSize;
+    showZero?: boolean;
     onIncrease?: (value: number) => void;
     onDecrease?: (value: number) => void;
     onChange?: (value: number) => void;
@@ -18,6 +19,7 @@ export const Counter: FC<CounterProps> = ({
     value,
     minValue = 0,
     size = 'default',
+    showZero = false,
     onIncrease,
     onDecrease,
     onChange,

@@ -33,7 +33,7 @@ export const Header: FC = () => {
                     </Text>
                 </div>
 
-                <Badge content={orders.length}>
+                <Badge content={orders.length === 0 ? '' : orders.length}>
                     <Button variant="shop-cart-primary" onClick={handleClickCart} />
                 </Badge>
             </div>
