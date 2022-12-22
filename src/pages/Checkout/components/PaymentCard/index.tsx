@@ -5,7 +5,7 @@ import { CurrencyDollar, CreditCard, Money, Bank } from 'phosphor-react';
 import { Text } from '../../../../components/ui/Text';
 import { Radio } from '../../../../components/ui/Radio';
 
-type PaymentMethod = 'credit' | 'debit' | 'money';
+export type PaymentMethod = 'credit' | 'debit' | 'money';
 
 interface PaymentForm {
     method: PaymentMethod;

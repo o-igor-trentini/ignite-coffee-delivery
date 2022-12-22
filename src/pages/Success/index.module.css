@@ -1,6 +1,7 @@
 .successContainer {
     width: 100%;
     padding: 0 var(--default-sides-padding);
+    margin: 80px 0;
 
     display: flex;
     justify-content: center;
@@ -10,8 +11,6 @@
 }
 
 .successDescription {
-    margin-top: 80px;
-
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -27,11 +26,78 @@
     color: var(--yellow-dark) !important;
 }
 
+.successContent {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px
+}
+
+.successContent img {
+    width: 30.75rem;
+}
+
 .successCard {
     width: 100%;
 
     background: transparent;
 
-    border: 1px solid !important;
-    border-image-source: linear-gradient(102.89deg, #DBAC2C 2.61%, #8047F8 98.76%) !important;
+    border: 1px solid;
+    gap: 32px;
+    /*border-image-source: linear-gradient(102.89deg, #DBAC2C 2.61%, #8047F8 98.76%) !important;*/
+}
+
+.successCardItem {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+}
+
+.successCardItemDescription {
+    flex: 1;
+
+    color: var(--base-text);
+}
+
+.successCardItemDescription span  {
+    display: flex;
+    flex-direction: row;
+}
+
+.successCardItemIcon {
+    width: 2rem;
+    height: 2rem;
+    padding: 8px;
+
+    border-radius: 50%;
+    color: var(--white);
+}
+
+.successCardItemIconMap {
+    background: var(--purple);
+}
+
+.successCardItemIconTimer {
+    background: var(--yellow);
+}
+
+.successCardItemIconDollar {
+    background: var(--yellow-dark);
+}
+
+@media screen and (max-width: 992px) {
+    .successContent img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .successContainer {
+        margin: 20px 0;
+    }
 }

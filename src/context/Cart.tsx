@@ -1,7 +1,9 @@
 import { Coffee } from '../pages/Home/components/CoffeeMenu/components/CoffeeList';
 import { createContext, FC, ReactNode, useEffect, useReducer } from 'react';
 import { cartReducer, CartState } from '../reducer/reducer';
-import { addOrderAction, removeOrderAction, updateOrderAction } from '../reducer/actions';
+import { addOrderAction, removeOrderAction, setDetailsAction, updateOrderAction } from '../reducer/actions';
+import { AddressForm } from '../pages/Checkout/components/AddressFormCard';
+import { PaymentMethod } from '../pages/Checkout/components/PaymentCard';
 
 export interface Order {
     id: string | null;
@@ -9,11 +11,18 @@ export interface Order {
     amount: number;
 }
 
+export interface CartDetails {
+    address: AddressForm | null;
+    payment: string | null;
+}
+
 interface CartContextType {
     orders: Order[];
+    details: CartDetails;
     addOrder: (order: Order) => void;
     removeOrder: (orderId: string) => void;
     updateOrder: (order: Order) => void;
+    setDetails: (address: AddressForm, paymentMethod: PaymentMethod) => void;
 }
 
 export const CartContext = createContext<CartContextType>({} as CartContextType);
@@ -26,20 +35,29 @@ export const CartContextProvider: FC<CartContextProviderProps> = ({ children }) 
     const [cartState, dispatch] = useReducer(cartReducer, { orders: [] }, () => {
         const storedStateAsJson = localStorage.getItem('@ignite-coffee-delivery:cart-state');
 
-        let storedCartState: CartState = { orders: [] };
+        let storedCartState: CartState = {
+            orders: [],
+            details: {
+                address: null,
+                payment: null,
+            },
+        };
 
         if (storedStateAsJson) storedCartState = JSON.parse(storedStateAsJson);
 
         return storedCartState;
     });
 
-    const { orders } = cartState;
+    const { orders, details } = cartState;
 
     const addOrder = (order: Order): void => dispatch(addOrderAction(order));
 
     const removeOrder = (orderId: string): void => dispatch(removeOrderAction(orderId));
 
     const updateOrder = (order: Order): void => dispatch(updateOrderAction(order));
+
+    const setAddress = (address: AddressForm, paymentMethod: PaymentMethod): void =>
+        dispatch(setDetailsAction(address, paymentMethod));
 
     useEffect(() => {
         const stateJson = JSON.stringify(cartState);
@@ -48,6 +66,8 @@ export const CartContextProvider: FC<CartContextProviderProps> = ({ children }) 
     }, [cartState]);
 
     return (
-        <CartContext.Provider value={{ orders, addOrder, removeOrder, updateOrder }}>{children}</CartContext.Provider>
+        <CartContext.Provider value={{ orders, details, addOrder, removeOrder, updateOrder, setDetails: setAddress }}>
+            {children}
+        </CartContext.Provider>
     );
 };

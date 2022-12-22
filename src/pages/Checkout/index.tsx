@@ -1,12 +1,14 @@
-import { FC, useRef } from 'react';
+import { FC, useContext, useRef } from 'react';
 import styles from './index.module.css';
 import PaymentCard, { PaymentCardFormRef } from './components/PaymentCard';
 import { Title } from '../../components/ui/Title';
 import { CartCard } from './components/CartCard';
 import AddressFormCard, { AddressFormCardRef } from './components/AddressFormCard';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../../context/Cart';
 
 export const Checkout: FC = () => {
+    const { setDetails } = useContext(CartContext);
     const navigate = useNavigate();
     const baseUrl = import.meta.env.BASE_URL;
     const addressFormRef = useRef<AddressFormCardRef>(null);
@@ -17,6 +19,8 @@ export const Checkout: FC = () => {
         const paymentFormValues = paymentFormRef.current?.getValues();
 
         if (!addressFormValues || !paymentFormValues) return;
+
+        setDetails(addressFormValues, paymentFormValues.method);
 
         navigate(baseUrl + 'success');
     };
