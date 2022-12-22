@@ -21,113 +21,119 @@ import { Button } from '../../../../../../components/ui/Button';
 import { CartContext } from '../../../../../../context/Cart';
 import { moneyMask } from '../../../../../../utils/string';
 
+enum CoffeeTags {
+    Traditional = 'tradicional',
+    Iced = 'gelado',
+    WithMilk = 'com leite',
+    Special = 'especial',
+    Alcoholic = 'alcoólico',
+}
+
 export interface Coffee {
     name: string;
     description: string;
     price: number;
-    tags: string[];
+    tags: CoffeeTags[];
     imageSrc: string;
 }
-
-// TODO: Mudar implementação de tags
 
 const coffees: Coffee[] = [
     {
         name: 'Expresso Tradicional',
         description: 'O tradicional café feito com água quente e grãos moídos',
         price: 9.9,
-        tags: ['tradicional'],
+        tags: [CoffeeTags.Traditional],
         imageSrc: expressoTradicionalPng,
     },
     {
         name: 'Expresso Americano',
         description: 'Expresso diluído, menos intenso que o tradicional',
         price: 9.9,
-        tags: ['tradicional'],
+        tags: [CoffeeTags.Traditional],
         imageSrc: expressoAmericanoPng,
     },
     {
         name: 'Expresso Cremoso',
         description: 'Café expresso tradicional com espuma cremosa',
         price: 9.9,
-        tags: ['tradicional'],
+        tags: [CoffeeTags.Traditional],
         imageSrc: expressoCremosoPng,
     },
     {
         name: 'Expresso Gelado',
         description: 'Bebida preparada com café expresso e cubos de gelo',
         price: 9.9,
-        tags: ['tradicional', 'gelado'],
+        tags: [CoffeeTags.Traditional, CoffeeTags.Iced],
         imageSrc: expressoGeladoPng,
     },
     {
         name: 'Café com Leite',
         description: 'Meio a meio de expresso tracional com leite vaporizado',
         price: 9.9,
-        tags: ['tradicional', 'com leite'],
+        tags: [CoffeeTags.Traditional, CoffeeTags.WithMilk],
         imageSrc: cafeComLeitePng,
     },
     {
         name: 'Latte',
-        description: 'Uma dose de café expresso com o dobre de leite e espuma cremosa',
+        description: 'Uma dose de café expresso com o dobro de leite e espuma cremosa',
         price: 9.9,
-        tags: ['tradicional', 'com leite'],
+        tags: [CoffeeTags.Traditional, CoffeeTags.WithMilk],
         imageSrc: LattePng,
     },
     {
         name: 'Capuccino',
         description: 'Bebida com canela feita de doses iguais de café, leite e espuma',
         price: 9.9,
-        tags: ['tradicional', 'com leite'],
+        tags: [CoffeeTags.Traditional, CoffeeTags.WithMilk],
         imageSrc: CapuccinoPng,
     },
     {
         name: 'Macchiato',
         description: 'Café expresso misturado com um pouco de leite quente e espuma',
         price: 9.9,
-        tags: ['tradicional', 'com leite'],
+        tags: [CoffeeTags.Traditional, CoffeeTags.WithMilk],
         imageSrc: MacchiatoPng,
     },
     {
         name: 'Mocaccino',
         description: 'Café expresso com calda de chocolate, pouco leite e espuma',
         price: 9.9,
-        tags: ['tradicional', 'com leite'],
+        tags: [CoffeeTags.Traditional, CoffeeTags.WithMilk],
         imageSrc: MocaccinoPng,
     },
     {
         name: 'Chocolate Quente',
         description: 'Bebida feita com chocolate dissolvido no leite quente e café',
         price: 9.9,
-        tags: ['especial', 'com leite'],
+        tags: [CoffeeTags.Special, CoffeeTags.WithMilk],
         imageSrc: ChocolatePng,
     },
     {
         name: 'Cubano',
         description: 'Drink gelado de café expresso com rum, creme de leite e hortelã',
         price: 9.9,
-        tags: ['especial', 'alcoólico', 'gelado'],
+        tags: [CoffeeTags.Special, CoffeeTags.Alcoholic, CoffeeTags.Iced],
         imageSrc: CubanoPng,
     },
     {
         name: 'Havaiano',
         description: 'Bebida adocicada preparada com café e leite de coco',
         price: 9.9,
-        tags: ['especial'],
+        tags: [CoffeeTags.Special],
         imageSrc: HavaianoPng,
     },
     {
         name: 'Árabe',
         description: 'Bebida preparada com grãos de café árabe e especiarias',
         price: 9.9,
-        tags: ['especial'],
+        tags: [CoffeeTags.Special],
         imageSrc: arabePng,
     },
     {
         name: 'Irlandês',
         description: 'Bebida a base de café, uísque irlandês, açúcar e chantilly',
         price: 9.9,
-        tags: ['especial', 'alcoólico'],
+        tags: [CoffeeTags.Special, CoffeeTags.Alcoholic],
         imageSrc: irlandesPng,
     },
 ];

@@ -54,3 +54,13 @@
 
     border-radius: 50%;
 }
+
+@media screen and (max-width: 576px) {
+    .descriptionItens {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
