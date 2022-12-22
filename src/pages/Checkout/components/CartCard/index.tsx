@@ -15,7 +15,7 @@ interface CartCardProps {
 export const CartCard: FC<CartCardProps> = ({ onFinish }) => {
     const { orders, removeOrder, updateOrder } = useContext(CartContext);
     const deliveryPrice = 3.5;
-    const itemsTotalPrice = orders.reduce<number>((_, { coffee, amount }) => coffee.price * amount, 0);
+    const itemsTotalPrice = orders.reduce<number>((acc, { coffee, amount }) => coffee.price * amount + acc, 0);
     const finalPrice = itemsTotalPrice + deliveryPrice;
 
     const cartItem = ({ id, coffee, amount }: Order): JSX.Element => {
