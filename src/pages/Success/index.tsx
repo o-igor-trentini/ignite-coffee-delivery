@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import { Title } from '../../components/ui/Title';
 import { Text } from '../../components/ui/Text';
 import { Card } from '../../components/ui/Card';
@@ -10,10 +10,14 @@ import deliveryPng from '../../assets/pages/success/delivery.png';
 
 export const Success: FC = () => {
     const baseUrl = import.meta.env.BASE_URL;
-    const { details } = useContext(CartContext);
+    const { details, resetOrder } = useContext(CartContext);
     const { address, payment } = details;
 
     if (!address || !payment) return <Navigate to={baseUrl + 'checkout'} />;
+
+    useEffect(() => {
+        resetOrder();
+    }, []);
 
     return (
         <div className={styles.successContainer}>

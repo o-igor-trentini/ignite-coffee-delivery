@@ -1,7 +1,13 @@
 import { Coffee } from '../pages/Home/components/CoffeeMenu/components/CoffeeList';
 import { createContext, FC, ReactNode, useEffect, useReducer } from 'react';
 import { cartReducer, CartState } from '../reducer/reducer';
-import { addOrderAction, removeOrderAction, setDetailsAction, updateOrderAction } from '../reducer/actions';
+import {
+    addOrderAction,
+    removeOrderAction,
+    resetOrderAction,
+    setDetailsAction,
+    updateOrderAction,
+} from '../reducer/actions';
 import { AddressForm } from '../pages/Checkout/components/AddressFormCard';
 import { PaymentMethod } from '../pages/Checkout/components/PaymentCard';
 
@@ -23,6 +29,7 @@ interface CartContextType {
     removeOrder: (orderId: string) => void;
     updateOrder: (order: Order) => void;
     setDetails: (address: AddressForm, paymentMethod: PaymentMethod) => void;
+    resetOrder: () => void;
 }
 
 export const CartContext = createContext<CartContextType>({} as CartContextType);
@@ -56,8 +63,10 @@ export const CartContextProvider: FC<CartContextProviderProps> = ({ children }) 
 
     const updateOrder = (order: Order): void => dispatch(updateOrderAction(order));
 
-    const setAddress = (address: AddressForm, paymentMethod: PaymentMethod): void =>
+    const setDetails = (address: AddressForm, paymentMethod: PaymentMethod): void =>
         dispatch(setDetailsAction(address, paymentMethod));
+
+    const resetOrder = (): void => dispatch(resetOrderAction());
 
     useEffect(() => {
         const stateJson = JSON.stringify(cartState);
@@ -66,7 +75,7 @@ export const CartContextProvider: FC<CartContextProviderProps> = ({ children }) 
     }, [cartState]);
 
     return (
-        <CartContext.Provider value={{ orders, details, addOrder, removeOrder, updateOrder, setDetails: setAddress }}>
+        <CartContext.Provider value={{ orders, details, addOrder, removeOrder, updateOrder, setDetails, resetOrder }}>
             {children}
         </CartContext.Provider>
     );

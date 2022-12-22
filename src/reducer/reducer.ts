@@ -69,6 +69,13 @@ export const cartReducer = (state: CartState, action: CartAction): CartState => 
             return { ...state, details };
         }
 
+        case ActionTypes.RESET_ORDER: {
+            return {
+                ...state,
+                orders: [],
+            };
+        }
+
         default:
             return state;
     }
