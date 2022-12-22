@@ -1,0 +1,37 @@
+.successContainer {
+    width: 100%;
+    padding: 0 var(--default-sides-padding);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.successDescription {
+    margin-top: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.successDescription span {
+    color: var(--base-subtitle);
+}
+
+.successDescriptionTitle {
+    color: var(--yellow-dark) !important;
+}
+
+.successCard {
+    width: 100%;
+
+    background: transparent;
+
+    border: 1px solid !important;
+    border-image-source: linear-gradient(102.89deg, #DBAC2C 2.61%, #8047F8 98.76%) !important;
+}
