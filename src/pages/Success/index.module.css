@@ -42,11 +42,14 @@
 .successCard {
     width: 100%;
 
-    background: transparent;
-
-    border: 1px solid;
     gap: 32px;
-    /*border-image-source: linear-gradient(102.89deg, #DBAC2C 2.61%, #8047F8 98.76%) !important;*/
+
+    border: solid 1px transparent;
+    background-image:
+        linear-gradient(var(--white), var(--white)),
+        radial-gradient(circle at top left, var(--purple), var(--yellow));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
 }
 
 .successCardItem {
