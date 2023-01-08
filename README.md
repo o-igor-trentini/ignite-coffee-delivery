@@ -27,7 +27,7 @@ Me veja em funcionamento [clicando aqui][] ***:)***
 Clone este repositório com:
 
 ```shell
-git@github.com:o-igor-trentini/ignite-coffee-delivery.git
+git clone git@github.com:o-igor-trentini/ignite-coffee-delivery.git
 ```
 
 Use o [npm][] para instalar as dependências:
